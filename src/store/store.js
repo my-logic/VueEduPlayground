@@ -10,7 +10,7 @@ export const store = new Vuex.Store({
             { name: "Open Toe Socks", price: 20 },
             { name: "Slightly Used Diapers", price: 40 },
             { name: "Refurbished Supositories", price: 60 },
-            { name: "Fart Airfreshner", price: 80 },
+            { name: "Fart Airfreshner", price: 100 },
         ],
     },
     getters: {
