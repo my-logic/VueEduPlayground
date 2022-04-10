@@ -4,7 +4,9 @@
     <img alt="Vue logo" src="./assets/logo.png" />
     <Welcome msg="Welcome to Felipe's Toy App" />
     <div>
-      <a href="#/">Home</a> | <a href="#/about">About</a> |
+      <a href="#/">Home</a> |
+      <a href="#/counter">Counter</a> | 
+      <a href="#/about">About</a> |
       <a href="#/non-existent-path">Broken Link</a>
       <component :is="currentView" />
     </div>
@@ -23,7 +25,7 @@
 <script>
 import Welcome from "./components/Welcome.vue";
 import Todo from "./components/Todo.vue";
-import Home from "./components/Home.vue";
+import Counter from "./components/Counter.vue";
 import About from "./components/About.vue";
 import NotFound from "./components/NotFound.vue";
 import Header from "./components/Header.vue";
@@ -32,7 +34,8 @@ import ProductListOne from "./components/ProductListOne.vue";
 import ProductListTwo from "./components/ProductListTwo.vue";
 
 const routes = {
-  "/": Home,
+  // "/": Home,
+  "/counter": Counter,
   "/about": About,
 };
 
