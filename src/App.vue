@@ -2,7 +2,7 @@
   <div id="app">
     <app-header v-bind:title="title"></app-header>
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Felipe's Toy App" />
+    <Welcome msg="Welcome to Felipe's Toy App" />
     <div>
       <a href="#/">Home</a> | <a href="#/about">About</a> |
       <a href="#/non-existent-path">Broken Link</a>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Welcome from "./components/Welcome.vue";
 import Todo from "./components/Todo.vue";
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
@@ -39,7 +39,7 @@ const routes = {
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    Welcome,
     Todo,
     "app-header": Header,
     "app-footer": Footer,
