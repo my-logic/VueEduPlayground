@@ -1,25 +1,26 @@
 <template>
-  <div id="app">
-    <app-header v-bind:title="title"></app-header>
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <Welcome msg="Welcome to Felipe's Toy App" />
-    <div>
-      <a href="#/">Home</a> |
-      <a href="#/counter">Counter</a> | 
-      <a href="#/about">About</a> |
-      <a href="#/non-existent-path">Broken Link</a>
-      <component :is="currentView" />
+    <div id="app">
+        <app-header v-bind:title="title"></app-header>
+        <img alt="Vue logo" src="./assets/logo.png" height="200" width="200" />
+        <Welcome msg="Welcome to Felipe's Toy App" />
+        <router-view></router-view>
+        <div>
+            <router-link to="/profile">Profile</router-link> |
+            <a href="#/">Home</a> | <a href="#/counter">Counter</a> |
+            <a href="#/about">About</a> |
+            <a href="#/non-existent-path">Broken Link</a>
+            <component :is="currentView" />
+        </div>
+        <div v-if="wantToDo">
+            <Todo />
+        </div>
+        <div v-else class="product-lists">
+            <product-list-one></product-list-one>
+            <product-list-two></product-list-two>
+        </div>
+        
+        <app-footer class="footer" v-bind:title="title"></app-footer>
     </div>
-    <div v-if="wantToDo">
-      <Todo />
-    </div>
-    <div v-else>
-      <product-list-one></product-list-one>
-      <product-list-two></product-list-two>
-    </div>
-
-    <app-footer v-bind:title="title"></app-footer>
-  </div>
 </template>
 
 <script>
@@ -34,47 +35,63 @@ import ProductListOne from "./components/ProductListOne.vue";
 import ProductListTwo from "./components/ProductListTwo.vue";
 
 const routes = {
-  // "/": Home,
-  "/counter": Counter,
-  "/about": About,
+    // "/": Home,
+    "/counter": Counter,
+    "/about": About,
 };
 
 export default {
-  name: "App",
-  components: {
-    Welcome,
-    Todo,
-    "app-header": Header,
-    "app-footer": Footer,
-    "product-list-one": ProductListOne,
-    "product-list-two": ProductListTwo,
-  },
-  data() {
-    return {
-      currentPath: window.location.hash,
-      title: "Felipe's knowledge transmission app",
-      wantToDo: false,
-    };
-  },
-  computed: {
-    currentView() {
-      return routes[this.currentPath.slice(1) || "/"] || NotFound;
+    name: "App",
+    components: {
+        Welcome,
+        Todo,
+        "app-header": Header,
+        "app-footer": Footer,
+        "product-list-one": ProductListOne,
+        "product-list-two": ProductListTwo,
     },
-  },
-  mounted() {
-    window.addEventListener("hashchange", () => {
-      this.currentPath = window.location.hash;
-    });
-  },
+    data() {
+        return {
+            currentPath: window.location.hash,
+            title: "Felipe's knowledge transmission app",
+            wantToDo: false,
+        };
+    },
+    computed: {
+        currentView() {
+            return routes[this.currentPath.slice(1) || "/"] || NotFound;
+        },
+    },
+    mounted() {
+        window.addEventListener("hashchange", () => {
+            this.currentPath = window.location.hash;
+        });
+    },
 };
 </script>
 
 <style>
+html {
+    height: 100%;
+}
 
 body {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  text-align: center;
-  color: rgb(108, 105, 105);
-  background: lightgrey;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: rgb(108, 105, 105);
+    background: lightgrey;
+    height: 100%;
+}
+
+#app {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+}
+
+.product-lists {
+    margin-bottom: 50px;
 }
 </style>

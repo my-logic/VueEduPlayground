@@ -1,18 +1,16 @@
 <template>
     <div class="counter-squared">
-        {{ $store.state.counter }} 
-        <sup>2</sup> = 
+        {{ $store.state.counter }}
+        <sup>2</sup> =
         {{ $store.getters.counterSquared }}
     </div>
 </template>
 
 <script>
 export default {
-    name: 'SquaringCounter',
-
-}
+    name: "SquaringCounter",
+};
 </script>
 
 <style>
-
 </style>

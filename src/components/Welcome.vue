@@ -1,22 +1,21 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-  </div>
+    <div class="hello">
+        <h1>{{ msg }}</h1>
+    </div>
 </template>
 
 <script>
 export default {
-  name: 'WelcomeMessage',
-  props: {
-    msg: {
-      type: String,
-      required: true
-    }
-  }
-}
+    name: "WelcomeMessage",
+    props: {
+        msg: {
+            type: String,
+            required: true,
+        },
+    },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>

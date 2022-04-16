@@ -10,8 +10,8 @@ export const store = new Vuex.Store({
         products: [
             { name: "Open Toe Socks", price: 20 },
             { name: "Slightly Used Diapers", price: 40 },
-            { name: "Refurbished Supositories", price: 60 },
-            { name: "Fart Airfreshner", price: 100 },
+            { name: "Refurbished Underwear", price: 60 },
+            { name: "Leftovers", price: 100 },
         ],
         counter: 0,
         colorCode: 'blue',
@@ -53,16 +53,16 @@ export const store = new Vuex.Store({
                 context.commit('reducePrice', payload);
             }, 2000);
         },
-        increaseCounter( { commit } ) {
+        increaseCounter({ commit }) {
             axios('http://www.randomnumberapi.com/api/v1.0/random?min=100&max=1000&count=5').then(response => {
                 console.log('response: ', response);
                 commit('increaseCounter', response.data[0]);
-            })
+            });
         },
-        setColorCode( { commit }, newValue ) {
+        setColorCode({ commit }, newValue) {
             commit('setColorCode', newValue);
         }
-    }, 
+    },
     modules: { // allows us to breakup the store, allowing us to have separate state, actions, mutations, and getters in a different module, one for each different parts of the app (if those sections have different functionality)
 
     }
