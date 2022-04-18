@@ -2,8 +2,8 @@
     <div id="product-list-one">
         <h2>Product List One</h2>
         <ul>
-            <li v-for="product in saleProducts" :key="product.name">
-                <span class="name">{{ product.name }}</span>
+            <li v-for="(product, index) in saleProducts" :key="index">
+                <span class="name">Product {{index + 1}} is: {{ product.name }}</span>
                 <span class="price">${{ product.price }}</span>
             </li>
         </ul>
@@ -12,8 +12,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
     computed: {

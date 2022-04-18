@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import axios from 'axios';
+// import axios from 'axios';
+// import fetch from 'fetch';
 
 Vue.use(Vuex);
 
@@ -53,11 +54,20 @@ export const store = new Vuex.Store({
                 context.commit('reducePrice', payload);
             }, 2000);
         },
+        // increaseCounter({ commit }) {
+        //     axios('http://www.randomnumberapi.com/api/v1.0/random?min=100&max=1000&count=5').then(response => {
+        //         console.log('response: ', response);
+        //         commit('increaseCounter', response.data[0]);
+        //     });
+        // },
         increaseCounter({ commit }) {
-            axios('http://www.randomnumberapi.com/api/v1.0/random?min=100&max=1000&count=5').then(response => {
-                console.log('response: ', response);
-                commit('increaseCounter', response.data[0]);
-            });
+            fetch('http://www.randomnumberapi.com/api/v1.0/random?min=100&max=1000&count=5')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data: ', data);
+                    commit('increaseCounter', data[0]);
+                })
+                .catch(err => console.log('error message: ', err.message))
         },
         setColorCode({ commit }, newValue) {
             commit('setColorCode', newValue);
