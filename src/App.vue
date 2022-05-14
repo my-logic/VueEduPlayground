@@ -1,15 +1,14 @@
 <template>
     <div id="app">
         <app-header v-bind:title="title"></app-header>
-        <img alt="Vue logo" src="./assets/logo.png" height="200" width="200" />
         <Welcome msg="Welcome to Felipe's Toy App" />
+        <FormHelper></FormHelper>
         <router-view></router-view>
         <div>
             <router-link to="/profile">Profile</router-link> |
             <a href="#/">Home</a> | 
             <a href="#/counter">Counter</a> |
-            <a href="#/about">About</a> |
-            <a href="#/punch">Punch</a> |         
+            <a href="#/about">About</a> |       
             <a href="#/non-existent-path">Broken Link</a>
             <component :is="currentView" />
         </div>
@@ -28,6 +27,7 @@
 
 <script>
 import Welcome from "./components/Welcome.vue";
+import FormHelper from "./components/FormHelper.vue"
 import Todo from "./components/Todo.vue";
 import Counter from "./components/Counter.vue";
 import About from "./views/About.vue";
@@ -36,14 +36,11 @@ import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import ProductListOne from "./components/ProductListOne.vue";
 import ProductListTwo from "./components/ProductListTwo.vue";
-import Track from "./components/Track.vue";
-import Punchbag from "./components/Punchbag.vue";
 
 const routes = {
     // "/": Home,
     "/counter": Counter,
     "/about": About,
-    "/punch": Punchbag,
 };
 
 export default {
@@ -51,12 +48,11 @@ export default {
     components: {
         Welcome,
         Todo,
+        FormHelper,
         "app-header": Header,
         "app-footer": Footer,
         "product-list-one": ProductListOne,
         "product-list-two": ProductListTwo,
-        "mouse-tracker": Track,
-        "punchbag": Punchbag,
     },
     data() {
         return {
